@@ -1,0 +1,76 @@
+.date-wrapper{
+    width:100%;
+    background:#f3f3f3;
+    padding:15px 10px;
+    box-shadow:0 2px 10px rgba(0,0,0,0.1);
+    overflow:hidden;
+    margin-bottom:20px;
+}
+
+.date-scroll{
+    display:flex;
+    gap:15px;
+    justify-content:center;
+    overflow-x:auto;
+    scrollbar-width:none;
+}
+
+.date-scroll::-webkit-scrollbar{
+    display:none;
+}
+
+.date-box{
+    min-width:80px;
+    height:90px;
+    background:#fff;
+    border-radius:15px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    cursor:pointer;
+    transition:0.3s;
+    flex-shrink:0;
+    box-shadow:0 3px 8px rgba(0,0,0,0.1);
+}
+
+.date-box:hover{
+    transform:translateY(-5px);
+}
+
+.active-date{
+    background:#e54861;
+    color:white;
+}
+
+.day{
+    font-size:14px;
+    font-weight:600;
+}
+
+.date{
+    font-size:30px;
+    font-weight:bold;
+}
+
+.month{
+    font-size:14px;
+    font-weight:600;
+}
+
+
+@media(max-width:768px){
+
+    .date-scroll{
+        justify-content:flex-start;
+    }
+
+    .date-box{
+        min-width:70px;
+        height:80px;
+    }
+
+    .date{
+        font-size:24px;
+    }
+}

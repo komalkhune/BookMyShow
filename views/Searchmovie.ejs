@@ -1,0 +1,42 @@
+<%- include("Header/Header")%>
+
+<% if(!pictures || pictures.length === 0){ %>
+    <h2>No Movie found</h2>
+<% } %>
+
+
+<% pictures.map((Details)=>{ %>
+    <div>
+
+        <p>Movie Name: <%= Details.MovieName %></p>
+
+       
+        <p>Description: <%= Details.Description %></p>
+
+        <p>Rating: <%= Details.Rating %></p>
+
+        <p>Actors:
+            <% if(Array.isArray(Details.Actors)){ %>
+                <%= Details.Actors.join(", ") %>
+            <% } else { %>
+                <%= Details.Actors %>
+            <% } %>
+        </p>
+         <p>Show Duration</p>
+        <p>From: <%= Details.ReleaseDate %></p>
+        <p>From: <%= Details.EndDate %></p>
+
+        <p>Movie Time: <%= Details.Time %></p>
+        <p>Movie Price: <%= Details.Price %></p>
+
+
+        <img src="<%= Details.Image %>" width="200"/><br><br>
+
+    </div>
+<% }) %>
+
+
+
+
+
+<%-  include("Footer/Footer") %>

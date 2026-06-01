@@ -1,0 +1,123 @@
+<%- include("Header/Header")%>
+
+<style>
+    header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #000000;
+    z-index: 100;
+    padding: 10px;
+}
+
+.navbar{
+    padding: 0 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10;
+}
+.logo img{
+    height: 3rem;
+}
+
+
+</style>
+
+
+ <header>
+
+        <nav class="navbar">
+
+            <div class="logo"><img src="../public/images/Screenshot 2026-05-24 124716.png"/></div>
+        
+            
+            <div class="nav-right">
+                
+                   <!-- <div class="menu-btn" onclick="toggleMenu()">
+                      <i class="bi bi-list"></i>
+                   </div> -->
+            
+                <!-- <div class="nav">
+                       <ul class="nav-links">
+                       <li><a href="#home">Home</a></li>
+                       <li><a href="#movies">Movies</a></li>
+                       <li><a href="#contact">Contact Us</a></li>
+                    </ul>
+                </div> -->
+
+
+                <!-- <div>
+                    <select onchange="location=this.value" class="dropdownsignup">
+                        <option selected disabled>Signup</option>
+                       <option value="showsignupform">User Signup</option>
+                       <option value="theaterresistration">Theater Signup</option>
+                    </select>  
+                </div> -->
+        
+            </div>
+
+        </nav>
+
+        
+
+         <!-- <div class="mview" id="mv">
+            <ul class="nav-item" id="mobileMenu">
+              <li ><a href="#home">Home</a></li>
+              <li ><a href="#about">Movies</a></li>
+              <li ><a href="#menu">Theaters</a></li>
+              <li ><a href="#chefs">Offers</a></li>
+              <li ><a href="#contact">Contact Us</a></li>
+
+            </ul>
+         </div> -->
+
+    </header>
+
+ 
+
+<div class="container min-vh-100 d-flex justify-content-center align-items-center">
+    
+    
+    <div class="col-11 col-sm-8 col-md-6 col-lg-4">
+        
+        <div class="card shadow p-4 rounded">
+            
+            <h2 class="text-center mb-4">Sign Up</h2>
+
+            <p class="text-center">Create your Account</p>
+
+            <form method="post" action="/signup">
+
+                <input type="email"   placeholder="Enter your email" name="uname"  class="form-control my-3"/>
+
+                <input type="password" placeholder="Enter your password" name="upass"  class="form-control my-3"/>
+
+                <button type="submit" class="btn btn-warning w-100">
+                    Sign Up
+                </button>
+
+            </form>
+
+
+            <div class="text-center mt-3">
+                <span>Already Have Account ? </span>
+                <a href="/loginfrm" class="text-decoration-none fw-bold">
+                    Login
+                </a>
+            </div>
+
+            <% if(message){ %>
+                <div class="text-danger text-center mt-3">
+                    <%= message %>
+                </div>
+            <% } %>
+
+        </div>
+
+    </div>
+
+</div>
+
+<%- include("Footer/Footer")%>

@@ -1,0 +1,291 @@
+<%- include("Header/Header")%>
+
+
+<style>
+    .movie-ticket{
+        width: 100%;
+    }
+    /* .ticket-print{
+        width: 100%;
+    } */
+    .ticket-container {
+        width: 100%;
+        max-width: 700px;
+        margin: 0 auto;
+    }
+    
+    .ticket-header{
+       background: linear-gradient( 135deg, rgba(79, 70, 229, 0.9), rgba(236, 72, 153, 0.9) );
+       color: white;
+    }
+    #ticket-print{
+        width: 100%;
+        /* margin: 0 auto; */
+    }
+     .ticket-info{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .info-box{
+        display: flex;
+        text-align: center;
+    }
+    .info-box p:first-child{
+        margin-right: 7px;
+    }
+
+    .btn-section{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
+        padding: 5%;
+    }
+    .download-btn{
+    width: 200px;
+    padding: 10px;
+    border-radius: 10px;
+    color: white;
+    background: linear-gradient(135deg, #ff416c, #ff9a44);
+}
+.logout{
+    text-decoration: none;
+    color: #f5f6fa;
+     width: 100px;
+     /* margin-top: 20px; */
+    padding: 10px;
+    border-radius: 10px;
+     background: linear-gradient(135deg, #4a00df, #72007b);
+}
+.label{
+    font-weight: bold;
+}
+.seat{
+    padding: 10px 25px;
+    color: blueviolet;
+    border: 2px dashed blueviolet;
+
+}
+
+@media(min-width:768px){
+
+     .movie-ticket{
+        width: 80%;
+        margin: 0 auto;
+    }
+
+    .ticket-info{
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50px;
+    }
+    .info-box{
+        border: 1px solid gray;
+        padding: 18px;
+        font-display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .info-box p{
+        margin-bottom: 4px;
+    }
+    .info-box p i{
+        font-size: 30px;
+    }
+
+    .theater-section{
+        width: 90%;
+        margin: 0 auto;
+        border: 1px solid black;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: start;
+        padding: 15px;
+    }
+
+
+
+}
+
+</style>
+
+
+
+ 
+
+
+<div class="ticket-container text-center border border-success border-3 rounded-4 ">
+
+    <div class="ticket-header rounded-top p-1 mb-2">
+        <h2 class="mb-2 fw-1">🎬 Movie Ticket</h2>
+        <h5>Payment successfully</h5>
+        <p>Your booking is confirmed</p>
+    </div>
+
+         
+    <div id="ticket-print">
+
+        <input type="hidden" id="status" value="<%= data.Status %>">
+
+        <div class="movie-ticket">
+
+
+            <div id="ticket-body">
+
+                <div class="movie-name">
+                    <h3><%= data.MovieName %></h3>
+                </div>
+
+                <div class="mb-4 ticket-info">
+
+                    <div class="info-box">
+                         <p class="text-primary"><i class="bi bi-stopwatch"></i></p>
+                        <p class="label">Show Time:</p>
+                        <p class="value"><%= data.MovieTime %></p>  
+                    </div>
+
+                    <div class="info-box">
+                        <p class="text-danger"><i class="bi bi-calendar3"></i></p>
+                        <p class="label">Book Date:</p>
+                        <p class="value"><%= data.UserDate %></p>
+                    </div>
+
+                    <div class="info-box">
+                        <p class="text-success"><i class="bi bi-cash-coin"></i></p>
+                        <p class="label">Ticket Price:</p>
+                        <p class="value">₹ <%= data.MoviePrice %></p>
+                    </div>
+
+                    <div class="info-box py-md-4">
+                        <p><i class="fa-solid fa-chair" style="color: rgb(5, 5, 206);"></i></p>
+                        <p class="label">Total Seats:</p>
+                        <p class="value"><%= data.Totalseat %></p>
+                    </div>
+
+                </div>
+
+                <div class="mb-4 theater-section">
+                    <h4><i class="fa-sharp fa-solid fa-building-columns" style="color: rgb(5, 171, 206);"></i> Theater Details</h4>
+
+                    <hr>
+
+                    <p class="mb-0">
+                        <strong>Name :</strong>
+                        <%= data.TheaterName %>
+                    </p>
+
+                    <p>
+                        <strong>Location :</strong>
+                        <%= data.Landmark %>,
+                        <%= data.City %>,
+                        <%= data.State %>
+                    </p>
+                </div>
+
+                <div class="seat-section">
+                    <h4>💺 Seat Number</h4>
+
+                    <div class="seat-box d-flex justify-content-center align-item-center">
+                        <p id="seat" class="seat"><%= data.BookedSeat %></p>
+                    </div>
+                </div>
+
+                <div class="price-section">
+
+                    <h4>💳 Payment Summary</h4>
+                   
+                    <div class="price-row">
+                        <span class="fw-bold">Ticket Price:</span>
+                        <span >₹ <%= data.MoviePrice %></span>
+                    </div>
+
+                    <div class="price-row">
+                        <span class="fw-bold">Total Seats:</span>
+                        <span><%= data.Totalseat %></span>
+                    </div>
+
+                    <div class="price-row ">
+                        <span class="fw-bold">Calculation:</span>
+                        <span>
+                            ₹ <%= data.MoviePrice %> × <%= data.Totalseat %>
+                        </span>
+                    </div>
+                     <hr class="fs-1">
+                    <div class="price-row total mb-4">
+                        <span class="fw-bold">Total Price:</span>
+                        <span class="text-danger fs-3"> ₹ <%= data.TotalPrice %></span>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Separate Button Div -->
+          
+   
+        </div>
+
+        
+
+    </div>
+
+     <div class="btn-section">
+           <button class="download-btn me-4" onclick="downloadTicket()"><i class="bi bi-download"></i>  Download Ticket </button>
+   
+           <!-- <a href="/logout">Logout</a> -->
+           <a class="logout"  href="/showtheaterlogin"><i class="bi bi-box-arrow-left"></i> Logout</a>
+   
+            </div>
+
+   
+
+</div>
+
+
+
+
+
+<script>
+        
+function Random(){
+            document.getElementById("status").style.background="orange";
+
+        let sst = document.getElementById("status").value;
+
+        // let sst=ducument.getAttribute("data-app-status")
+        console.log(sst);
+    
+        let useat = document.getElementById("seat").innerText;
+    
+        console.log(sst);
+    
+        console.log(useat);
+
+
+
+
+        let selectseat= document.querySelectorAll(".selected");
+
+            selectseat.forEach((element)=>{
+             let seatNo = element.innerText;
+
+             if(useat.includes(seatNo)){
+
+             element.style.background = "red";
+             element.classList.add("booked");
+             }
+            });
+
+}
+Random();
+</script>
+<%- include("Footer/Footer")%>

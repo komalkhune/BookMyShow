@@ -1,0 +1,144 @@
+
+<%- include("Header/Header")%>
+
+<style>
+    header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #000000;
+    z-index: 100;
+    padding: 10px;
+}
+
+.navbar{
+    padding: 0 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10;
+}
+.logo img{
+    height: 3.5rem;
+} 
+.content{
+    margin-top: 70px;
+}
+.form-label{
+    font-weight: bold;
+}
+
+</style>
+
+
+
+<div class="container py-5">
+
+      <header>
+
+        <nav class="navbar">
+
+            <div class="logo"><img src="../public/images/Screenshot 2026-05-24 124716.png"/></div>
+        
+            
+            <div class="nav-right">
+        
+            </div>
+
+        </nav>
+
+    </header>
+
+    <div class="row justify-content-center content">
+
+        <div class="col-lg-7 col-md-9">
+
+            <div class="card shadow border-0 rounded-3">
+
+                <div class="card-body p-4">
+
+                    <h2 class="text-center mb-4">
+                        Edit Movie
+                    </h2>
+
+                    <form action="/updatemovie" method="POST">
+
+                        <input type="hidden" name="id" value="<%= moviedata._id %>">
+
+                        <input type="hidden" name="fid" value="<%= fid %>">
+
+                        <div class="mb-3">
+                            <label class="form-label">Movie Name</label>
+                            <input  type="text" name="mmmname" value="<%= moviedata.MovieName %>" class="form-control">
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Description</label>
+                            <input  type="text" name="mdesc" value="<%= moviedata.Description %>" class="form-control">
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label"> Movie Image URL</label>
+                            <input  type="text" name="mimage" value="<%= moviedata.Image %>" class="form-control">
+                        </div>
+
+                        <div class="row">
+
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Rating </label>
+                                <input  type="text" name="mrating" value="<%= moviedata.Rating %>" class="form-control">
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Actors</label>
+                                <input  type="text" name="mactors" value="<%= moviedata.Actors %>" class="form-control">
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Start Date</label>
+                                <input  type="date" name="msdate" value="<%= moviedata.ReleaseDate %>" class="form-control">
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">End Date</label>
+                                <input  type="date" name="medate" value="<%= moviedata.EndDate %>" class="form-control">
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Movie Time</label>
+                                <input  type="time" name="mtime" value="<%= moviedata.Time %>" class="form-control">
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Price</label>
+                                <input  type="number" name="mprice" value="<%= moviedata.Price %>" class="form-control">
+                            </div>
+
+                        </div>
+
+                        <button  type="submit" class="btn btn-primary w-100"> Update Movie
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<%- include("Footer/Footer")%>

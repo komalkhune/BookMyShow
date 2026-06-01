@@ -1,0 +1,279 @@
+
+
+<%- include("Header/Home") %>
+
+    <header>
+
+        <nav class="navbar">
+
+            <div class="logo"><img src="../public/images/Screenshot 2026-05-24 124716.png"/></div>
+        
+            
+            <div class="nav-right">
+                
+                   <!-- <div class="menu-btn" onclick="toggleMenu()">
+                      <i class="bi bi-list"></i>
+                   </div> -->
+            
+                <div class="nav">
+                       <ul class="nav-links">
+                       <li><a href="#home">Home</a></li>
+                       <li><a href="#movies">Movies</a></li>
+                       <!-- <li><a href="#offers">Offers</a></li> -->
+                       <li><a href="#contact">Contact Us</a></li>
+                    </ul>
+                </div>
+
+
+                <div>
+
+                    <select onchange="location=this.value" class="dropdownsignup">
+                        <option selected disabled>Signup</option>
+                       <option value="showsignupform">User Signup</option>
+                       <option value="theaterresistration">Theater Signup</option>
+                    </select>  
+
+                    <select onchange="location=this.value" class="dropdownsignup">
+                        <option selected disabled>Login</option>
+                       <option value="loginfrm">User Login</option>
+                       <option value="showtheaterlogin">Theater Login</option>
+                    </select>  
+
+                </div>
+        
+            </div>
+
+        </nav>
+
+        
+
+         <!-- <div class="mview" id="mv">
+            <ul class="nav-item" id="mobileMenu">
+              <li ><a href="#home">Home</a></li>
+              <li ><a href="#about">Movies</a></li>
+              <li ><a href="#menu">Theaters</a></li>
+              <li ><a href="#chefs">Offers</a></li>
+              <li ><a href="#contact">Contact Us</a></li>
+
+            </ul>
+         </div> -->
+
+    </header>
+
+
+    <div id="home" class="home">
+
+     
+        
+        <!-- <div class="d-flex flex-wrap justify-content-end align-item-start home-button"> -->
+            <!-- <div>
+                <select onchange="location=this.value" class="dropdownlogin">
+                  <option selected disabled>Login</option>
+                  <option value="loginfrm">User Login</option>
+                  <option value="showtheaterlogin">Theater Login</option>
+               </select>
+            </div> -->
+
+            <!-- <div>
+                <select onchange="location=this.value" class="dropdownsignup">
+                   <option selected disabled>Signup</option>
+                   <option value="showsignupform">User Signup</option>
+                   <option value="theaterresistration">Theater Signup</option>
+             </select>  
+
+            </div> -->
+
+        <!-- </div> -->
+
+
+        <div class="home-content">
+            <p class="p-head">Book Your Movie Tickets</p>
+            <p  class="p-content">Get the best seats for the latest movies at your favorite theaters.</p>
+            <button onclick="signup()">Book Now</button>
+        </div>
+
+       
+
+
+    </div>
+
+    <div id="movies" class="middle">
+
+        <div  class="show-now">
+
+            <div class="d-flex justify-content-between">
+                <div><h5 class="text-light">Now Showing</h5></div>
+                <div><h6 class="text-danger">View all ></h6></div>
+            </div>
+
+         <div class="owl-carousel owl-theme slide">
+            <div class="one">
+               <span><i class="bi bi-star-fill me-2"></i> 4</span>
+            </div>
+   
+            <div class="two">
+                <span><i class="bi bi-star-fill me-2"></i>4.3</span>
+            </div>
+   
+            <div class="three">
+               <span><i class="bi bi-star-fill me-2"></i> 4.7</span>
+            </div>
+   
+            <div class="four">
+                <span><i class="bi bi-star-fill me-2"></i>3.8</span>
+            </div>
+   
+            <div class="five">
+               <span><i class="bi bi-star-fill me-2"></i>4.8</span>
+            </div>
+
+             <div class="six">
+                <span><i class="bi bi-star-fill me-2"></i>4.5</span>
+            </div>
+   
+            <div class="seven">
+                <span><i class="bi bi-star-fill me-2"></i>4</span>
+            </div>
+
+             <div class="eight">
+                <span><i class="bi bi-star-fill me-2"></i>3.5</span>
+            </div>
+
+            
+         
+         </div>
+
+
+        </div>
+
+
+
+        <div id="offers" class="show-now">
+
+            <div class="d-flex justify-content-between">
+                <div><h5 class="text-light">Top Offers</h5></div>
+                <div><h6 class="text-danger">View all Offers ></h6></div>
+            </div>
+
+         <div class="slide2">
+            <div class="off">
+               <div class="offer-icon"><i class="fa-solid fa-percent fa-beat" style="color: rgb(206, 5, 5);"></i></div>
+               <div class="offer-content">
+                <p>Flat 25% OFF</p>
+                <P>Up to ₹150 on Movie Tickets</P>
+                <p>Code:<span> MOVIE25</span></p>
+               </div>
+            </div>
+   
+            <div class="off">
+              <div class="offer-icon"><i class="fa-solid fa-gift fa-beat" style="color: rgb(206, 5, 5);"></i></div>
+              <div class="offer-content">
+                <p>Buy 1 Get 1</p>
+                <P> On selected Movies</P>
+                <p>Code:<span> BOGO</span></p>
+              </div>  
+            </div>  
+   
+            <div class="off">
+              <div class="offer-icon"><i class="fa-solid fa-credit-card fa-beat" style="color: rgb(206, 5, 5);"></i></div>
+              <div class="offer-content">
+                <p>10% Instant Discount</p>
+                <P>On Credit/Debit Cards</P>
+                <p>Code:<span> SAVE10</span></p>
+              </div>
+            </div>
+
+            <div class="off">
+                <div class="offer-icon"><i class="fa-sharp fa-solid fa-ticket fa-beat" style="color: rgb(206, 5, 5);"></i></div>
+                <div class="offer-content">
+                  <p>20%  Discount</p>
+                  <P>On Buying 5 Ticket at Once</P>
+                  <p>Code:<span> QUICK20</span></p>
+                </div>
+            </div>
+            
+         
+         </div>
+
+
+        </div>
+
+
+
+    </div>
+
+
+    <div>
+
+
+        <div id="contact" class=" text-white pb-5 footer">
+          
+            <div class="row py-5 justify-content-between abc">
+
+                <div class="col col-12 col-sm-6 col-md-6 col-lg-3 mt-3 last ">
+                 <p><i class="bi bi-film" style="color: rgb(206, 5, 5);"></i> Movie<span>Book</span></p>
+                 <p>Your one-stop destination for booking movie tickets online. Fast, easy and hassle-free.</p>
+                 <div class="my-4 account">
+                    <a href="#"><i class="bi bi-facebook me-3"></i></a>
+                    <a href="#"><i class="bi bi-twitter me-3"></i></a>
+                    <a href="#"><i class="bi bi-youtube me-3"></i></a>
+                    <a href="#"><i class="bi bi-instagram me-3"></i></a>
+                 </div>
+                </div> 
+          
+              <div class="col col-12 col-sm-6 col-md-4 col-lg-3 ps-xl-4 ps-xxl-5 ">
+                <h4 class="py-4">Quick Links</h4>
+                <p><a href="#">Home</a></p>
+                <p><a href="#">Movies</a></p>
+                <p><a href="#">Theaters</a></p>
+                <p><a href="#">Offers</a></p>
+                <p><a href="#">About Us</a></p>
+                <p><a href="#">Contact Us</a></p>
+              </div>
+              <div class="col col-12 col-sm-6 col-md-4 col-lg-3 ">
+                 <h4 class="py-4">Help & Support</h4>
+                 <p><a href="#">FAQs</a></p>
+                 <p><a href="#">Cancellation Policy</a></p>
+                 <p><a href="#">Privacy Policy</a></p>
+                 <p><a href="#">Terms & Conditions</a></p>
+                 <p><a href="#">Refund Policy</a></p>
+              </div>
+              <div class="col col-12 col-sm-6 col-md-4 col-lg-3 ">
+                <h4 class="py-4">Contact Us</h4>
+                <p><a href="#"> <span><i class="bi bi-envelope"></i></span> support@moviebook.com</a></p>
+                <p><a href="#"> <span><i class="bi bi-telephone"></i></span> +91 1234467890</a></p>
+                <p><a href="#"> <span><i class="bi bi-geo-alt"></i></span> Pune, Maharashtra, India</a></p>
+
+              
+              </div>
+            
+               
+          
+            </div>
+       
+           <p class="py-5 mx-5 colorlib"> ©2026 MovieBook. All Rights Reserved. <i class="bi bi-heart-fill text-danger"></i> by <a href="#" class="text-danger">Colorlib</a> </p>
+               
+               
+        
+        </div>
+
+
+    </div>
+
+
+
+
+
+
+
+<script>
+
+    function signup(){
+       alert("Please Signup")
+    }
+
+
+ 
+</script>
+
+<%- include("Footer/Footer") %> 

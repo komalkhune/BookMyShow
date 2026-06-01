@@ -1,0 +1,706 @@
+
+ <%- include("Header/Header")%>
+
+   <h1 class="book">This is seat booking page</h1>
+
+<div class="container mt-4">
+
+    
+
+   
+
+<% confirmmovie.map((item)=>{ %>
+     <div class=" col-md-4 mb-4">
+        <div class="card h-100 shadow">
+
+          <img src="<%= item.Image %>" class="card-img-top" style="height:250px; object-fit:cover;">
+
+          <div class="card-body">
+            <h3 class="card-title"><%= item.MovieName %></h3>
+
+            <p class="card-text"><strong>Description:</strong> <%= item.Description %></p>
+            <p class="card-text"><strong>Rating:</strong> ⭐ <%= item.Rating %></p>
+
+            <p class="card-text"><strong>Actors:</strong> <%= item.Actors %></p>
+
+            <p><strong>Release:</strong> <%= item.ReleaseDate %></p>
+            <p><strong>Time:</strong> <%= item.Time %></p>
+          </div>
+
+          <div class="card-footer bg-white">
+
+            <% item.theaterdata.map((data)=>{ %>
+
+            <h3>Theater: <span class="badge bg-danger me-1 fs-5 px-3 py-2"><%= data.TheaterName %></span></h3>
+
+                 
+            <p><strong>Total Seats:</strong><%=data.Availableseats%></p>
+            <span><strong>location:</strong><%=data.Theaterlocation%>,</span>
+            <span><%=data.City%>,</span>
+            <span><%=data.State%></span>
+            <p><strong>Opening time:</strong><%=data.Openingtime%></p>
+
+
+            
+
+            <% let seats = Number(data.Availableseats) %>
+
+            <div style="display:flex; flex-wrap:wrap; width: 300px;">
+            
+              <% for(let i = 1; i <=seats ; i++) { %>
+
+                
+            
+                <div class="seat" onclick="selectSeat(this)" data-app-tid="<%=item.forid%>" data-app-mid="<%= item._id%>"
+                     style=" width:40px;
+                       height:40px;
+                       margin:5px;
+                       background:red;
+                       color:white;
+                       display:flex;
+                       align-items:center;
+                       justify-content:center;
+                       border-radius:5px;
+                       cursor:pointer; ">
+                  <%= i %>
+                </div>
+
+                
+              <% } %>
+            
+            </div>
+
+            
+            <!-- <div class="border border-danger">
+              <p>Booking Summary</p>
+              <h4>Selected Seats: <span id="seatCount">0</span></h4>
+              <h4>Prise Per Seat: 100rs</h4>
+              <h3>Total Price:<span class="text-danger fs-1"  id="totalPrice">0</span></h3>
+            </div> -->
+ 
+           <% }) %>
+
+          </div>
+
+
+          <div class="d-flex justify-content-around mt-3 mb-4">
+           <form action="/bookconfirm" method="get" style="display:inline;">
+                 <input type="hidden" name="id" value="<%= item._id %>">
+                  <button type="submit">Book Now</button>
+                </form>
+            <button class="btn btn-success w-30">See More</button>
+          </div>
+
+        </div>
+      </div>
+
+    <% }) %>
+
+  
+
+    
+
+
+ <script>
+
+  const seats=[];
+
+
+ function selectSeat(element) {
+
+  var mid=element.getAttribute("data-app-mid");
+  var tid=element.getAttribute("data-app-tid");
+
+  seats.push(element.innerText)
+  console.log("new data")
+  console.log(seats);
+  console.log(mid);
+  console.log(tid);
+  
+
+  
+  if (element.style.background === "red") {
+   element.style.background = "green";
+  } else {
+   element.style.background = "red";
+  }
+}
+
+</script>
+
+</div>
+
+
+
+
+<%- include("Footer/Footer")%>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+
+let pricePerSeat = 100;
+
+function selectSeat(element) {
+
+  
+  if (element.style.background === "red") {
+   element.style.background = "green";
+    element.classList.add("selected"); 
+  } else {
+   element.style.background = "red";
+    element.classList.remove("selected"); 
+  }
+
+  
+  let selectedSeats = document.querySelectorAll(".seat.selected");
+  let count = selectedSeats.length;
+
+  let total = count * pricePerSeat;
+
+  
+  document.getElementById("seatCount").innerText = count;
+  document.getElementById("totalPrice").innerText = total;
+}
+
+</script>
+
+
+
+
+
+ <!-- <% if(seats.length > 0){ %> -->
+
+
+ <!-- <% } else { %>
+
+   <p>No seats booked</p>
+
+<% } %> -->
+
+
+
+
+
+
+
+
+
+
+ <h2>Ticket Booked Successfully!</h2>
+
+        <p>Hello <b>${uumail}</b>,</p>
+
+        <p>Your movie ticket has been confirmed.</p>
+
+        <h3>Booking Details</h3>
+
+        <p><strong>Movie Name:</strong> ${moviename}</p>
+        <p><strong>Theater:</strong> ${theatername}</p>
+        <p><strong>Show Time:</strong> ${showtime}</p>
+        <p><strong>Seats:</strong> ${seats}</p>
+        <p><strong>Total Price:</strong> ₹${price}</p>
+
+        <br>
+
+        <p>
+            Please carry your ticket details while visiting the theater.
+        </p>
+
+        <h3>Enjoy Your Movie </h3>
+
+        <p>Thank You,<br>Movie Booking Team</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <%- include("Header/Header") %> -->
+
+<!-- <% if(ubseats.length <= 0){ %> -->
+
+<!-- <% if(!ubseats || Object.keys(ubseats).length === 0){ %>
+
+
+<h1 class="booking-title">This is seat booking page</h1>
+
+<div class="main-container">
+
+<% confirmmovie.forEach((item)=>{ %>
+
+<div class="movie-card">
+
+    <div class="top-row">
+
+        
+        <div class="image-section">
+            <img src="<%= item.Image %>" class="movie-image">
+        </div>
+
+        
+        <div class="details-section">
+
+            <h2 class="movie-name"><span id="mname"><%= item.MovieName %></span></h2>
+
+            <p><strong>Description:</strong> <%= item.Description %></p>
+            <p><strong>Rating:</strong> ⭐ <%= item.Rating %></p>
+            <p><strong>Actors:</strong> <%= item.Actors %></p>
+            <p><strong>Show Duration</strong></p>
+            <p><strong>From:</strong> <span id="msdate"><%= item.ReleaseDate %></span></p>
+            <p><strong>TO:</strong> <span id="medate"><%= item.EndDate %></span></p>
+
+            <p><strong>Time:</strong> <span id="mtime"><%= item.Time %> </span></p>
+            <p><strong>Price:</strong> <span id="mprice"><%= item.Price %> </span></p>
+
+
+        </div>
+
+    </div>
+
+
+    <div class="theater-section">
+
+    <% item.theaterdata.map((data)=>{ %>
+
+        <h3>
+            Theater:
+            <span class="theater-badge" id="tname"><%= data.TheaterName %></span>
+        </h3>
+
+        <p><strong>Total Seats:</strong> <%= data.Availableseats %></p>
+
+        <p>
+            <strong>Location:</strong>
+           <span id="tlocation"><%= data.Theaterlocation %></span> ,
+           <span id="tcity"><%= data.City %></span>,
+           <span id="tstate"><%= data.State %></span>
+        </p>
+
+        <p><strong>Opening Time:</strong> <%= data.Openingtime %></p>
+
+        <% let seats = Number(data.Availableseats) %>
+        <label><strong>Choose Date</strong></label>
+        <input type="date" placeholder="choose date for booking" id="inp" name="bdate" >
+    
+
+        <div class="seat-box">
+
+        <% for(let i=1; i<=seats; i++){ %>
+
+            <div class="seat"
+                 onclick="selectSeat(this)">
+                <%= i %>
+            </div>
+
+        <% } %>
+
+
+
+        </div>
+
+    <% }) %>
+
+
+
+    </div>
+
+    <div id="msg" style="color:red; font-size:25px; text-align: center; margin:10px 0;"></div>
+
+    
+    <div class="button-area">
+
+       
+         <button type="submit" class="book-btn" onclick="booknow(this)"  data-app-tid="<%= item.forid %>"
+                 data-app-mid="<%= item._id %>">Book Now</button>
+    
+        <button class="more-btn">See More</button>
+
+    </div>
+
+    
+
+</div>
+
+<% }) %>
+
+</div> -->
+
+
+
+
+
+<!-- <% } else { %> -->
+
+    <!-- <% ubseats.forEach((bseat)=>{ %> -->
+
+    <!-- <span id="bseats" class=""><%= bseat %></span> -->
+
+<!-- <% }) %> -->
+
+<!-- <% let bookedSeats = ubseats[ubdate] || []; %> -->
+
+
+
+<!-- <% Object.keys(ubseats).forEach((date)=>{ %>
+
+    <p><%= date %></p>
+
+    <% ubseats[date].forEach((seat)=>{ %>
+
+        <span><%= seat %></span>
+
+    <% }) %>
+
+<% }) %>
+
+<h1 class="booking-title">This is seat booking page</h1>
+
+<div class="main-container">
+
+<% confirmmovie.forEach((item)=>{ %>
+
+<div class="movie-card">
+
+    <div class="top-row">
+
+
+        <div class="image-section">
+            <img src="<%= item.Image %>" class="movie-image">
+        </div>
+
+
+        <div class="details-section">
+
+            <h2 class="movie-name">
+                <span id="mname"><%= item.MovieName %></span>
+            </h2>
+
+            <p><strong>Description:</strong> <%= item.Description %></p>
+            <p><strong>Rating:</strong> ⭐ <%= item.Rating %></p>
+            <p><strong>Actors:</strong> <%= item.Actors %></p>
+            <p><strong>Show Duration</strong></p>
+
+            <p>
+                <strong>From:</strong>
+                <span id="msdate"><%= item.ReleaseDate %></span>
+            </p>
+
+            <p>
+                <strong>To:</strong>
+                <span id="medate"><%= item.EndDate %></span>
+            </p>
+
+            <p>
+                <strong>Time:</strong>
+                <span id="mtime"><%= item.Time %></span>
+            </p>
+
+            <p>
+                <strong>Price:</strong>
+                <span id="mprice"><%= item.Price %></span>
+            </p>
+
+        </div>
+
+    </div>
+
+    
+    <div class="theater-section">
+
+    <% item.theaterdata.forEach((data)=>{ %>
+
+        <h3>
+            Theater:
+            <span class="theater-badge" id="tname">
+                <%= data.TheaterName %>
+            </span>
+        </h3>
+
+        <p>
+            <strong>Total Seats:</strong>
+            <%= data.Availableseats %>
+        </p>
+
+        <p>
+            <strong>Location:</strong>
+
+            <span id="tlocation">
+                <%= data.Theaterlocation %>
+            </span>,
+
+            <span id="tcity">
+                <%= data.City %>
+            </span>,
+
+            <span id="tstate">
+                <%= data.State %>
+            </span>
+        </p>
+
+        <p>
+            <strong>Opening Time:</strong>
+            <%= data.Openingtime %>
+        </p>
+
+        <% let seats = Number(data.Availableseats) %>
+
+        <label>
+            <strong>Choose Date</strong>
+        </label>
+
+        <input
+            type="date"
+            placeholder="choose date for booking"
+            id="inp"
+            name="bdate"
+        >
+
+        <% let bookedSeats = (ubseats && ubseats[ubdate]) || []; %>
+
+        <div class="seat-box">
+
+        <% for(let i = 1; i <= seats; i++) { %> 
+
+            <% if(bookedSeats.includes(i.toString())) { %>
+
+                <div
+                    class="seat bg-danger"
+                    onclick="alert('This Seat Already Booked! Choose another Seat')"
+                >
+                    <%= i %>
+                </div>
+
+            <% } else { %>
+
+                <div
+                    class="seat"
+                    onclick="selectSeat(this)"
+                >
+                    <%= i %>
+                </div>
+
+            <% } %>
+
+        <% } %>
+
+        </div>
+
+    <% }) %>
+
+    </div>
+
+    <div
+        id="msg"
+        style="color:red; font-size:25px; text-align:center; margin:10px 0;"
+    >
+    </div>
+
+    
+    <div class="button-area">
+
+        <button
+            type="submit"
+            class="book-btn"
+            onclick="booknow(this)"
+            data-app-tid="<%= item.forid %>"
+            data-app-mid="<%= item._id %>"
+        >
+            Book Now
+        </button>
+
+        <button class="more-btn">
+            See More
+        </button>
+
+    </div>
+
+</div>
+
+<% }) %>
+
+</div>
+
+<% } %>
+
+
+
+
+
+
+
+<%- include("Footer/Footer") %> -->
+
+
+
+
+
+
+<!-- <%- include("Header/Header") %>
+
+<% if(!ubseats || Object.keys(ubseats).length === 0){ %>
+
+    <h1>No seats booked</h1>
+
+<% } else { %>
+
+    <% Object.keys(ubseats).forEach((date)=>{ %>
+
+        <p><%= date %></p>
+
+        <% ubseats[date].forEach((seat)=>{ %>
+
+            <span><%= seat %></span>
+
+        <% }) %>
+
+    <% }) %>
+
+<% } %>
+
+<%- include("Footer/Footer") %> -->
+
+
+
+
+
+
+<div class="container py-5">
+
+    <!-- Top Buttons -->
+    <div class="row justify-content-center mb-4 g-3">
+
+        <div class="col-md-3 col-sm-6">
+            <form action="/movies" method="get">
+                <input type="hidden" value="<%= tuid %>" name="fid"/>
+                <button  type="submit" class="btn btn-warning w-100 fw-bold py-3 rounded-4 shadow"> Show My Movies </button>
+            </form>
+        </div>
+
+        <div class="col-md-3 col-sm-6">
+            <form action="/theaters" method="get">
+                <input type="hidden" value="<%= tuid %>" name="fid"/>
+                <button  type="submit" class="btn btn-info w-100 fw-bold py-3 rounded-4 shadow text-white"> Show My Theater</button>
+            </form>
+        </div>
+
+    </div>
+
+    <!-- Movie Form Card -->
+    <div class="row justify-content-center">
+        <div class="col-lg-8 col-md-10">
+
+            <div class="card border-0 shadow-lg rounded-4 bg-dark bg-opacity-75 text-light">
+
+                <div class="card-body p-4 p-md-5">
+
+                    <div class="text-center mb-4">
+                        <h1 class="fw-bold text-warning"> Insert Movie Details</h1>
+                    </div>
+
+                    <form method="post" action="/getmovieinfo">
+
+                        <div class="row">
+
+                            <div class="col-md-6 mb-3">
+                                <input  type="text" placeholder="Enter Movie Name" name="mname" class="form-control form-control-lg rounded-3" />
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <input  type="text" placeholder="Movie Description" name="mdesc" class="form-control form-control-lg rounded-3"/>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <input  type="text" placeholder="Movie Image URL" name="mimage" class="form-control form-control-lg rounded-3"  />
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <input  type="number" placeholder="Movie Rating" name="mrating" class="form-control form-control-lg rounded-3" />
+                            </div>
+
+                            <div class="col-12 mb-3">
+                                <input  type="text" placeholder="Enter Actors" name="mactors" class="form-control form-control-lg rounded-3" />
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label fw-bold">Show Duration From</label>
+
+                                <input  type="date" name="sdate" class="form-control form-control-lg rounded-3"/>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label fw-bold">Show Duration To</label>
+
+                                <input  type="date" name="edate" class="form-control form-control-lg rounded-3"/>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label fw-bold">Movie Time</label>
+
+                                <input  type="time" name="mtime" class="form-control form-control-lg rounded-3" />
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <input  type="number" placeholder="Movie Price" name="mprice" class="form-control form-control-lg rounded-3" />
+                            </div>
+
+                        </div>
+
+                        <input  type="hidden" value="<%= tuid %>" name="fid"/>
+
+                        <button  type="submit" class="btn btn-warning w-100 fw-bold py-3 rounded-4 mt-3"> ➕ Add Movie</button>
+
+                        <% if(message){ %>
+                            <div class="alert alert-success mt-4 text-center rounded-3">
+                                <%= message %>
+                            </div>
+                        <% } %>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+
+

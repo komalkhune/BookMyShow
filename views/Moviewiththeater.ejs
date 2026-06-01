@@ -1,0 +1,134 @@
+<%- include("Header/Header") %>
+
+<style>
+    header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #000000;
+    z-index: 100;
+    padding: 10px;
+}
+
+.navbar{
+    padding: 0 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10;
+}
+.logo img{
+    height: 3rem;
+} 
+.row{
+  margin-top: 100px;
+}
+
+</style>
+
+<div class="container my-4">
+
+  <header>
+
+        <nav class="navbar">
+
+            <div class="logo"><img src="../public/images/Screenshot 2026-05-24 124716.png"/></div>
+        
+            
+            <div class="nav-right">
+        
+            </div>
+
+        </nav>
+
+    </header>
+
+  <div class="row">
+
+    <% picturess.map((item) => { %>  
+
+      <div class="col-md-4 mb-4">
+        <div class="card h-100 shadow">
+
+          <img src="<%= item.Image %>" class="card-img-top" style="height:250px; object-fit:cover;">
+
+          <div class="card-body">
+            <h5 class="card-title"><%= item.MovieName %></h5>
+
+            <p class="card-text"><strong>Description:</strong> <%= item.Description %></p>
+            <p class="card-text"><strong>Rating:</strong> ⭐ <%= item.Rating %></p>
+
+            <p class="card-text">
+              
+              <p><strong>Actors:</strong> : <%= item.Actors%></p>
+            </p>
+            <p><strong>Show Duration</strong></p>
+            <p class="card-text"><strong>From:</strong> <%= item.ReleaseDate %></p>   
+            <p class="card-text"><strong>To:</strong> <%= item.EndDate %></p>
+            <p class="card-text"><strong>Time:</strong> <%= item.Time %></p>
+            <p class="card-text"><strong>Price:</strong> <%= item.Price %></p>
+
+          </div>
+
+          <div class="card-footer bg-white">
+
+             <% item.theater_info.map((data)=>{ %>
+            <h6>Theater:</h6>
+
+                 <span class="badge bg-primary me-1 fs-5 px-3 py-2"><%= data.TheaterName %></span>
+
+            <% }) %>
+
+            
+          </div>
+
+
+            <div class="d-flex justify-content-around mt-3 mb-4">
+
+              <!-- <button class="btn btn-warning w-30 me-2">Book Now</button> -->
+
+              <!-- <button class="btn btn-success w-30">See More</button> -->
+
+            </div>
+
+        </div>
+      </div>
+
+    <% }) %>
+
+    
+
+
+  </div>
+
+  
+
+</div>
+<%- include("Footer/Footer") %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,79 @@
+<%- include("Header/Header")%>
+
+<style>
+    header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #000000;
+    z-index: 100;
+    padding: 10px;
+}
+
+.navbar{
+    padding: 0 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10;
+}
+.logo img{
+    height: 3rem;
+} 
+
+</style>
+
+ <div class="container min-vh-100 d-flex justify-content-center align-items-center">
+
+    <header>
+
+        <nav class="navbar">
+
+            <div class="logo"><img src="../public/images/Screenshot 2026-05-24 124716.png"/></div>
+        
+            
+            <div class="nav-right">
+        
+            </div>
+
+        </nav>
+
+    </header>
+
+    <div class="col-11 col-sm-8 col-md-6 col-lg-4">
+
+        <div class="card shadow-lg p-4 rounded-4">
+
+            <h2 class="text-center mb-4">Login</h2>
+
+            <form method="post" action="/login">
+
+                <div class="mb-3">
+                    <input type="email" placeholder="Enter your email" name="uname" class="form-control"required/>
+                </div>
+
+                <div class="mb-3">
+                    <input type="password" placeholder="Enter your password" name="upass" class="form-control"/>
+                </div>
+
+                <button type="submit" class="btn btn-success w-100">
+                    Log In
+                </button>
+
+            </form>
+
+            <% if(message){ %>
+                <div class="text-danger text-center mt-3">
+                    <%= message %>
+                </div>
+            <% } %>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<%- include("Footer/Footer")%>

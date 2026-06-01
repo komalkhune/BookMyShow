@@ -1,0 +1,130 @@
+<%- include("Header/Header") %>
+
+<div class="container mt-4">
+
+  <style>
+    header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #000000;
+    z-index: 100;
+    padding: 10px;
+}
+
+.navbar{
+    padding: 0 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10;
+}
+.logo img{
+    height: 3rem;
+} 
+.main{
+  margin-top: 50px;
+}
+
+</style>
+
+    
+
+      <br><br>
+
+   <div class="row">
+
+
+    <header>
+
+        <nav class="navbar">
+
+            <div class="logo"><img src="../public/images/Screenshot 2026-05-24 124716.png"/></div>
+        
+            
+            <div class="nav-right">
+
+              <form method="post" action="/searchmovies">
+                 <input  type="text"  class=" border-0 py-2 mb-2 rounded-pill px-2" placeholder="Search Movie..." name="search" >
+                 <button class="btn btn-danger px-4" type="submit"> Search </button>
+              </form>
+        
+            </div>
+
+        </nav>
+
+    </header>
+
+    <% citymovie.map((data)=>{ %>
+
+     
+    
+
+          <div class="col-md-4 mb-4 main">
+            <div class="card shadow-lg h-100">
+
+              <img src="<%= data.Image %>"  class="card-img-top"  style=" object-fit:cover;">
+
+              <div class="card-body">
+                <h5 class="card-title"><%= data.MovieName %></h5>
+
+                <p class="card-text">
+                  <strong>Description:</strong><br>
+                  <%= data.Description %>
+                </p>
+
+                <p class="card-text">
+                  ⭐ <strong><%= data.Rating %></strong>
+                </p>
+
+                <p class="card-text">
+                  <strong>Actors:</strong> <%= data.Actors %>
+                </p>
+                
+                <p><strong>Show Duration</strong></p>
+                <p class="card-text">
+                  <strong>from:</strong> <%= data.ReleaseDate %>
+                  <strong>To:</strong> <%= data.EndDate %>
+
+                </p>
+
+                <p class="card-text">
+                  <strong>Time:</strong> <%= data.Time %>
+                </p>
+
+                 <p class="card-text">
+                  <strong>Price:</strong> <%= data.Price %>
+                </p>
+
+                <hr>
+
+                <h6 class="text-muted">Theater</h6>
+                <span class="badge bg-primary fs-6">
+                  <%= data.theaterDetails.TheaterName %>
+                </span>
+
+                <p class="mt-2 text-muted">
+                  📍 <%= data.theaterDetails.Theaterlocation %>
+                </p>
+
+                <div class="d-flex justify-content-between mt-3">
+                  <form action="/booknow" method="get" style="display:inline;">
+                   <input type="hidden" name="id" value="<%= data._id %>">
+                    <button type="submit" class="btn btn-success w-30">Book Now</button>
+                  </form>
+                  <!-- <button class="btn btn-success btn-sm">See More</button> -->
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+
+
+    <% }) %>
+
+  </div>
+</div>
+
+<%- include("Footer/Footer") %>

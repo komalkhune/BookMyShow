@@ -1,0 +1,128 @@
+<%- include("Header/PayHeader") %>
+
+
+
+<div class="ticket-container">
+
+    <div class="movie-ticket">
+
+        <div class="ticket-header">
+            <h1>🎬 Movie Ticket</h1>
+            <p>If you want to book confirmed please pay</p>
+        </div>
+
+        <div class="ticket-body">
+
+            <input type="hidden" id="obid" value="<%= data._id %>">
+            
+            <div class="d-md-flex justufy-content-center">
+
+            <div class="border border-2 rounded p-md-2">
+
+                <div class="movie-name">
+                    <h2><%= data.MovieName %></h2>
+                </div>
+    
+                <div class="ticket-info">
+    
+                    <div class="info-box">
+                        <span class="label">Show Time</span>
+                        <span class="value"><%= data.MovieTime %></span>
+                    </div>
+    
+                    <div class="info-box">
+                        <span class="label">User Book Date</span>
+                        <span class="value"><%= data.UserDate %></span>
+                    </div>
+    
+                    <div class="info-box">
+                        <span class="label">Ticket Price</span>
+                        <span class="value">₹ <%= data.MoviePrice %></span>
+                    </div>
+    
+                    <div class="info-box">
+                        <span class="label">Total Seats</span>
+                        <span class="value"><%= data.Totalseat %></span>
+                    </div>
+    
+                </div>
+
+            </div>    
+
+            <div class="border border-2 rounded p-md-2">
+
+                <div class="theater-section">
+                    <h3>🏢 Theater Details</h3>
+    
+                    <p>
+                        <strong>Name :</strong>
+                        <%= data.TheaterName %>
+                    </p>
+    
+                    <p>
+                        <strong>Location :</strong>
+                        <%= data.Landmark %>,
+                        <%= data.City %>,
+                        <%= data.State %>
+                    </p>
+                </div>
+    
+                <div class="seat-section">
+                    <h3>💺 Seat Number</h3>
+    
+                    <div class="seat-box">
+                        <%= data.BookedSeat %>
+                    </div>
+                </div>
+
+            </div>
+            </div>
+
+            <div class="price-section">
+
+                <h3 class="fw-bold">💳 Payment Summary</h3>
+
+                <div class="price-row">
+                    <span class="fw-bold">Ticket Price</span>
+                    <span>₹ <%= data.MoviePrice %></span>
+                </div>
+
+                <div class="price-row">
+                    <span class="fw-bold">Total Seats</span>
+                    <span><%= data.Totalseat %></span>
+                </div>
+
+                <div class="price-row">
+                    <span class="fw-bold">Calculation</span>
+                    <span>
+                        ₹ <%= data.MoviePrice %> × <%= data.Totalseat %>
+                    </span>
+                </div>
+
+                <div class="price-row total">
+                    <span class="fw-bold">Total Price</span>
+                    <span class="text-danger fs-4 fw-bold">₹ <%= data.TotalPrice %></span>
+                </div>
+
+           
+
+               <div id="smsg" style="color:red; font-size:25px; text-align: center; margin:10px 0;"></div>
+
+              <button class="pay-btn" onclick="payment(this)"><i class="bi bi-currency-rupee"></i> <%= data.TotalPrice %> Pay Now </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+   
+
+
+
+
+
+<%- include("Footer/Footer") %>

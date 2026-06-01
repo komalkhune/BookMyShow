@@ -1,0 +1,110 @@
+<%- include("Header/Header")%>
+
+<style>
+    header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #000000;
+    z-index: 100;
+    padding: 10px;
+}
+
+
+.navbar{
+    padding: 0 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10;
+}
+.logo img{
+    height: 3rem;
+} 
+.content{
+    margin-top: 50px;
+}
+.logout{
+    text-decoration: none;
+    color: #f5f6fa;
+     width: 100px;
+     /* margin-top: 20px; */
+    padding: 10px;
+    border-radius: 10px;
+     background: linear-gradient(135deg, #4a00df, #72007b);
+}
+@media(min-width:768px){
+    .logo img{
+    height: 3.5rem;
+} 
+}
+</style>
+
+
+
+
+<div class="container py-5 ">
+
+    <header>
+
+        <nav class="navbar">
+
+            <div class="logo"><img src="../public/images/Screenshot 2026-05-24 124716.png"/></div>
+        
+            
+            <div class="nav-right">
+
+                <a class="logout"  href="/showtheaterlogin"><i class="bi bi-box-arrow-left"></i> Logout</a>
+        
+            </div>
+
+        </nav>
+
+    </header>
+    <div class="content">
+
+    <h2 class="text-center mb-4">Theater Details</h2>
+
+    <div class="row g-4">
+        <% tdata.map((data)=>{ %>
+
+        <div class="col-12 col-sm-6 col-lg-4">
+            <div class="card shadow border-0 h-100 rounded-4 p-3">
+
+                <div class="card-body">
+                    <h4 class="card-title text-primary mb-3">
+                        <%= data.TheaterName %>
+                    </h4>
+
+                    <p><strong>Seats:</strong> <%= data.Availableseats %></p>
+                    <p><strong>Opening Time:</strong> <%= data.Openingtime %></p>
+                    <p><strong>Email:</strong> <%= data.Theatermail %></p>
+                    <p><strong>Password:</strong> <%= data.Theaterpass %></p>
+                    <p><strong>Land Mark:</strong> <%= data.Theaterlocation %></p>
+                    <p><strong>Country:</strong> <%= data.Country %></p>
+                    <p><strong>State:</strong> <%= data.State %></p>
+                    <p><strong>City:</strong> <%= data.City %></p>
+                </div>
+
+                <div class="card-footer bg-transparent border-0">
+                    <form action="/edittheater" method="GET">
+                        <input type="hidden" name="id" value="<%= data._id %>">
+                        <input type="hidden" name="fid" value="<%= tuid %>">
+
+                        <button type="submit" class="btn btn-warning w-100 rounded-pill">
+                            Edit
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+
+        <% }) %>
+    </div>
+
+    </div>
+</div>
+
+<%- include("Footer/Footer")%>

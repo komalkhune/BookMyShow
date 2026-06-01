@@ -1,0 +1,176 @@
+<%- include("Header/ThResiheader")%>
+
+<style>
+    header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #000000;
+    z-index: 100;
+    padding: 10px;
+}
+
+.navbar{
+    padding: 0 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10;
+}
+.logo img{
+    height: 3rem;
+} 
+.register-card{
+    margin-top: 100px;
+}
+
+</style>
+
+<div class="d-flex justify-content-center align-item-center">
+
+      <header>
+
+        <nav class="navbar">
+
+            <div class="logo"><img src="../public/images/Screenshot 2026-05-24 124716.png"/></div>
+        
+            
+            <div class="nav-right">
+        
+            </div>
+
+        </nav>
+
+    </header>
+
+  <div class="register-card">
+
+        <div class="card-header-custom">
+            <h2>🎬 Theater Registration</h2>
+            <p class="mb-0">Register your theater and manage movies</p>
+        </div>
+
+        <div class="card-body p-4">
+
+            <% if(message){ %>
+                <div class="error-message">
+                    <%= message %>
+                </div>
+            <% } %>
+
+            <form method="post" action="/theaterform">
+
+                <input type="text" placeholder="Enter Theater Name" name="tname" class="form-control mb-3"/>
+
+                <input type="number" placeholder="Enter Seats Capacity" name="tseats" class="form-control mb-3"/>
+
+                <label class="fw-bold mb-2">Opening Time</label>
+                <input type="time" name="totime" class="form-control mb-3"/>
+
+                <input type="email" placeholder="Enter Theater Email" name="tmail" class="form-control mb-3"/>
+
+                <input type="password" placeholder="Enter Password" name="tpass" class="form-control mb-3"/>
+
+                <label class="fw-bold mb-2">
+                    Select Theater Location
+                </label>
+
+                <!-- Country -->
+                <select class="form-select mb-3" name="tcountry" id="country" onchange="getState()">
+                    <option value="">Select Country</option>
+                    <option value="india">India</option>
+                    <option value="usa">USA</option>
+                </select>
+
+                <!-- State -->
+                <select class="form-select mb-3" name="tstate" id="state" onchange="getCity()">
+                    <option value="">Select State</option>
+                </select>
+
+                <!-- City -->
+                <select class="form-select mb-3" name="tcity" id="city">
+                    <option value="">Select City</option>
+                </select>
+
+                <label class="fw-bold mb-2">
+                    Local Area / Landmark
+                </label>
+
+                <input type="text" placeholder="Enter Landmark" name="tlocation" class="form-control mb-4"/>
+
+                <button type="submit" class="btn btn-register text-white w-100">
+                    Register Theater
+                </button>
+
+                <div class="text-center mt-4 login-link">
+                    <span>Already Have an Account?</span>
+                    <a href="/showtheaterlogin"> Login</a>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+    </div>
+
+
+
+
+
+
+
+
+<script>
+  function getState() {
+  let country = document.getElementById("country").value;
+  let state = document.getElementById("state");
+
+  // clear old data
+  state.innerHTML = "<option>Select State</option>";
+
+  if (country == "india") {
+    state.innerHTML += "<option>Maharashtra</option>";
+    state.innerHTML += "<option>Gujarat</option>";
+  }
+
+  if (country == "usa") {
+    state.innerHTML += "<option>Texas</option>";
+    state.innerHTML += "<option>California</option>";
+  }
+}
+
+function getCity() {
+  let state = document.getElementById("state").value;
+  let city = document.getElementById("city");
+
+  // clear old data
+  city.innerHTML = "<option>Select City</option>";
+
+  if (state == "Maharashtra") {
+    city.innerHTML += "<option>Pune</option>";
+    city.innerHTML += "<option>Mumbai</option>";
+    city.innerHTML += "<option>Nagpur</option>";
+
+  }
+
+  if (state == "Gujarat") {
+    city.innerHTML += "<option>Surat</option>";
+    city.innerHTML += "<option>Ahmedabad</option>";
+    city.innerHTML += "<option>Vadodara</option>";
+
+  }
+
+  if (state == "Texas") {
+    city.innerHTML += "<option>Dallas</option>";
+    city.innerHTML += "<option>Houston</option>";
+  }
+
+  if (state == "California") {
+    city.innerHTML += "<option>Los Angeles</option>";
+    city.innerHTML += "<option>San Diego</option>";
+  }
+}
+</script>
+
+<%- include("Footer/Footer")%>
