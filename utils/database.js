@@ -9,6 +9,7 @@ const mongoconnect=(callback)=>{
       console.log("The database connected")
     }).catch((error)=>{
         console.log(error)
+         console.log("MongoDBconnection Error:", err.message);
     });
     callback();
 }
@@ -18,6 +19,7 @@ const getdb=()=>{
         return _db;
     }else{
         console.log("Database not Found");
+         console.log("MongoDBgetdb Error:", err.message);
     }
 }
 
