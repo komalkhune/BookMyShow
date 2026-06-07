@@ -1,11 +1,11 @@
 const express=require("express");
-const { showForm, getSignupDetails, getLoginDetails, loginfrm } = require("../controllers/signpprocess");
+const { showForm, getSignupDetails, getLoginDetails, loginfrm, logout } = require("../controllers/signpprocess");
 const { showfpage, movieDatainsert, getmoviedetails, showMovies, deleteMovie, editMoviePage, updateMovie, searchmovies, showMoviestheater,  } = require("../controllers/movies");
 const { getTheaterdetails, showtheaterresistrationfrm, showtheaterlogin, gettheaterlogindetails, getallTheater, edittheaterPage, updateTheater, sendMail, verifyLoginOTP } = require("../controllers/theaters");
 const { uploadfile } = require("../controllers/uploadfile");
 const { getLocation, searchwithName } = require("../controllers/location");
 const { bookNow, bookConfirm } = require("../controllers/booknow");
-const { seatbook, payment, confirmseatbook, ticket, logout } = require("../controllers/seatbook");
+const { seatbook, payment, confirmseatbook, ticket } = require("../controllers/seatbook");
 
 
 const router=express.Router();
@@ -19,7 +19,7 @@ router.get("/up",(req,res)=>{
   res.render("Upload");
 })
 
-// router.get("/logout", logout);
+router.get("/logout", logout);
 
 router.get("/ticketinfo/",ticket);
 router.post("/seatbookinginfo",confirmseatbook);

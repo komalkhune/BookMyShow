@@ -18,12 +18,12 @@ exports.getSignupDetails=(req,res)=>{
         return res.render("signup", { message: "All fields are required"});
     }
 
-    if (
-       username.includes("@") &&
-       username.includes(".") &&
-       username.indexOf("@") > 0 &&
-       username.indexOf(".") > username.indexOf("@")
-    ) {
+    let pattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[A-Za-z]{2,}$/;
+
+    if (!pattern.test(tmail)) {
+
+         res.render("Signup",{message:"Invalid Email"});
+    }else{
 
          bcrypt.hash(password,10).then((success)=>{
          console.log(success)
@@ -47,9 +47,7 @@ exports.getSignupDetails=(req,res)=>{
              console.log(error);
          })
 
-    } else {
-     res.render("signup",{message:"Invalid Email"});
-}
+    }
 
 
    
@@ -135,3 +133,21 @@ exports.getLoginDetails=(req,res)=>{
     })
     }
 }
+
+
+exports.logout = (req, res) => {
+
+    req.session.destroy((err) => {
+
+        if(err){
+            console.log(err)
+            
+
+        }else{
+             res.redirect("/");
+             console.log("session destroy")
+        }
+       
+    });
+
+};

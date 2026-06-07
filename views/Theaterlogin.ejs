@@ -29,6 +29,29 @@
 .logo img{
     height: 3rem;
 }
+.logout{
+    font-size: 12px;
+    text-decoration: none;
+    color: #f5f6fa;
+     width: 80px;
+     /* margin-top: 20px; */
+    padding: 3px;
+    border-radius: 10px;
+     background: linear-gradient(135deg, #4a00df, #72007b);
+     display: flex;
+     justify-content: space-around;
+     align-items: center;
+}
+
+@media(min-width:768px){
+
+    .logout{
+     font-size: 16px;
+      width: 100px;
+       padding: 8px;
+}
+
+}
 </style>
 
 <div class="container min-vh-100 d-flex justify-content-center align-items-center">
@@ -41,7 +64,7 @@
         
             
             <div class="nav-right">
-        
+                    <a class="logout ms-4"  href="/"><i class="bi bi-box-arrow-left"></i> Back</a>
             </div>
 
         </nav>

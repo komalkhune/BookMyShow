@@ -16,8 +16,17 @@ exports.getTheaterdetails=(req,res)=>{
   let Theaterdata = { tname, tseats, totime, tmail, tlocation, tcountry, tstate, tcity };
 
 
+ 
+
    if ( !tname || !tseats || !totime || !tmail || !tlocation || !tcountry || !tstate || !tcity || !tpass ) {  
-    res.render("Theaterresistration",{message:"All fields are required"});
+    return res.render("Theaterresistration",{message:"All fields are required"});
+  }
+
+   let pattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[A-Za-z]{2,}$/;
+
+  
+  if(!pattern.test(tmail)){
+   return res.render("Theaterresistration",{message:"Enter Valid Email"});
   }else{
 
 
@@ -87,7 +96,9 @@ exports.getTheaterdetails=(req,res)=>{
       console.log(error)
     })
 
-    }
+   }
+
+  }
   
 
  

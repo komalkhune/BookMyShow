@@ -10,6 +10,10 @@ exports.getLocation = (req, res) => {
   console.log("State:", state);
   console.log("City:", city);
 
+  if(country === "" || state === "" || city === ""){
+    res.render("LocationSet", {message:"Please select Correct location"})
+  }else{
+
   let instance=new Ulocation();
 
   instance.getlocation(country,state,city).then((success)=>{
@@ -19,12 +23,14 @@ exports.getLocation = (req, res) => {
     // if(success!=0){
     console.log("Location wise data")  
     console.log(success)
-    res.render("CityWiseMovie",{citymovie:success})
+    res.render("CitywiseMovie",{citymovie:success})
     // }
   }).catch((error)=>{
     console.log(error)
     console.log("Location")
   });
+
+  }
 
   
 };

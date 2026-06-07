@@ -170,16 +170,11 @@ exports.showMoviestheater = (req,res)=>{
         res.render("Moviewiththeater", {picturess: success});
     }).catch((error)=>{
         console.log(error)
-        //   res.render("Moviewiththeater", {
-        //     picturess: []
-        // });
+       
     });
 }
 
 
-// exports.theaterresistration=(req,res)=>{
-// res.render("Theaterresistration")
-// }
 
     
 
