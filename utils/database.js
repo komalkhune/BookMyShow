@@ -19,7 +19,6 @@ const getdb=()=>{
         return _db;
     }else{
         console.log("Database not Found");
-         console.log("MongoDBgetdb Error:", error.message);
     }
 }
 
