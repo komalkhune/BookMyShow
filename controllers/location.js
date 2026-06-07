@@ -10,7 +10,7 @@ exports.getLocation = (req, res) => {
   console.log("State:", state);
   console.log("City:", city);
 
-  if(country === "" || state === "" || city === ""){
+  if(!country || !state || !city){
     res.render("LocationSet", {message:"Please select Correct location"})
   }else{
 

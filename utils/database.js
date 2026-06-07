@@ -7,11 +7,12 @@ const mongoconnect=(callback)=>{
         console.log(success)
       _db=success.db("mydatabace");
       console.log("The database connected")
+      callback();
     }).catch((error)=>{
         console.log(error)
          console.log("MongoDBconnection Error:", error.message);
     });
-    callback();
+    
 }
 
 const getdb=()=>{
