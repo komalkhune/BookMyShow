@@ -101,10 +101,6 @@ exports.getTheaterdetails=(req,res)=>{
   }
   
 
- 
-
-
-}
 
 
 exports.showtheaterlogin=(req,res)=>{
