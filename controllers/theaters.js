@@ -80,6 +80,13 @@ exports.getTheaterdetails=(req,res)=>{
               subject: "About Signing", // subject line
               text: "", // plain text body
               html: `<h1>Welcome ${TheaterName} </h1><p>Thank You for signing up</p>` , // HTML body
+              })
+
+              .then((info)=>{
+                 console.log("Mail sent", info.response);
+              })
+              .catch((err)=>{
+                 console.log("Mail error:", err);
               });
 
 
