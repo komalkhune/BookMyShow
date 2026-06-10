@@ -1,5 +1,5 @@
 
-function toggleMenu(){
+const toggleMenu=()=>{
     document.querySelector(".mview")
     .classList.toggle("show");
 }
@@ -14,7 +14,7 @@ let seats = [];
 
 
 
-function selectSeat(element){
+const selectSeat=(element)=>{
 
      ubdate=document.getElementById("inp").value;
 
@@ -115,7 +115,7 @@ function selectSeat(element){
 
 
 
-function booknow(ele){
+const booknow=(ele)=>{
 
   
 
@@ -288,7 +288,7 @@ function changeDate() {
 
 
 
-function payment(){
+const payment=()=>{
 
 
     let obid = document.getElementById("obid").value;
@@ -320,7 +320,7 @@ function payment(){
 
 
 
-function downloadTicket(){
+const downloadTicket=()=>{
 
     let printData = document.getElementById("ticket-print").innerHTML;  
 
