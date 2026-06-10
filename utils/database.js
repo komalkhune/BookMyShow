@@ -20,7 +20,6 @@ const getdb=()=>{
         return _db;
     }else{
         console.log("Database not Found");
-         console.log("MongoDBconnection Error:", error.message);
 
     }
 }
