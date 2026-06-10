@@ -39,7 +39,7 @@ const store=new mongosession({
 app.use(session({
     secret:"this is string",
     resave:false,
-    saveInitialized:true,
+    saveUninitialized:true,
     store:store,
 }))
 
