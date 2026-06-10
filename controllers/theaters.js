@@ -13,7 +13,7 @@ exports.getTheaterdetails=(req,res)=>{
 
     let { tname, tseats, totime, tmail, tlocation, tcountry, tstate, tcity, tpass } = req.body;
 
-  let Theaterdata = { tname, tseats, totime, tmail, tlocation, tcountry, tstate, tcity };
+  // let Theaterdata = { tname, tseats, totime, tmail, tlocation, tcountry, tstate, tcity };
 
 
  
