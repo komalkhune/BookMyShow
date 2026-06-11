@@ -1,3 +1,4 @@
+require("dotenv").config(); 
 const express=require("express");
 const router=require("./Router/Router");
 const bodyParse=require("body-parser");

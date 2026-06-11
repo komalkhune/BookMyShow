@@ -69,8 +69,10 @@ exports.getTheaterdetails=(req,res)=>{
                 port: 587,
                 secure: false, // use STARTTLS (upgrade connection to TLS after connecting)
                 auth: {
-                  user: "khunekomal08@gmail.com",
-                  pass: "notwrpfavobzgkzg",
+                  // user: "khunekomal08@gmail.com",
+                  // pass: "notwrpfavobzgkzg",
+                    user: process.env.EMAIL_USER,
+                    pass: process.env.EMAIL_PASS,
                 },
             });
 
