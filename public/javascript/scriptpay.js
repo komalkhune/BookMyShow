@@ -7,7 +7,7 @@ function Payment(){
 
     if(status==1){
 
-         axios.post("http://localhost:3000/moviebookinginfo", { mid:mid, tid:tid, seats:seats, mtime:mtime, today:today, ubdate:ubdate, mname:mname, mdate:mdate, mprice:mprice, count:count, total:total, tname:tname, tlocation:tlocation, tcity:tcity, tstate:tstate})
+         axios.post("https://bookmyshowbykomal.onrender.com/moviebookinginfo", { mid:mid, tid:tid, seats:seats, mtime:mtime, today:today, ubdate:ubdate, mname:mname, mdate:mdate, mprice:mprice, count:count, total:total, tname:tname, tlocation:tlocation, tcity:tcity, tstate:tstate})
        .then((success)=>{
           console.log("axios data")
           console.log(success)
