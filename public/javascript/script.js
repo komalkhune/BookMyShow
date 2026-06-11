@@ -185,15 +185,17 @@ const booknow=(ele)=>{
 
 
 
-      axios.post("http://localhost:3000/moviebookinginfo", { mid:mid, tid:tid, seats:seats, mtime:mtime, Ctime:Ctime, today:today, ubdate:ubdate, mname:mname, mdate:mdate, medate:medate, mprice:mprice, count:count, total:total, tname:tname, tlocation:tlocation, tcity:tcity, tstate:tstate, status:status })
+      axios.post("http://bookmyshowbykomal.onrender.com/moviebookinginfo", { mid:mid, tid:tid, seats:seats, mtime:mtime, Ctime:Ctime, today:today, ubdate:ubdate, mname:mname, mdate:mdate, medate:medate, mprice:mprice, count:count, total:total, tname:tname, tlocation:tlocation, tcity:tcity, tstate:tstate, status:status })
        .then((success)=>{
           console.log("axios data")
           console.log(success)
           let id=success.data;
-            // console.log(success.data)
+            // console.log(success.data)    https://bookmyshowbykomal.onrender.com
+
+
             console.log("newidid")
            console.log(id)
-          window.location.href = `http://localhost:3000/paymentpage/?id=${id}`
+          window.location.href = `http://bookmyshowbykomal.onrender.com/paymentpage/?id=${id}`
         //    document.getElementById("msg").innerText = success.data
 
       }).catch((error)=>{
@@ -294,7 +296,7 @@ const payment=()=>{
     let obid = document.getElementById("obid").value;
 
 
-        axios.post("http://localhost:3000/seatbookinginfo", {obid:obid})
+        axios.post("http://bookmyshowbykomal.onrender.com/seatbookinginfo", {obid:obid})
           .then((success)=>{
         //   console.log(success)
 
@@ -302,7 +304,7 @@ const payment=()=>{
         
             console.log("newidid")
            console.log(pid)
-          window.location.href = `http://localhost:3000/ticketinfo/?id=${pid}`
+          window.location.href = `http://bookmyshowbykomal.onrender.com/ticketinfo/?id=${pid}`
 
           document.getElementById("smsg").innerText="Payment Successfully";
         
